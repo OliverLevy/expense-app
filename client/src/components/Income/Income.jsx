@@ -19,7 +19,7 @@ export default function Income() {
           <label htmlFor="income">
             How much do you make a month after tax?
           </label>
-          <input type="number" name="income" />
+          <input type="number" name="income" step="any" />
         </div>
         {userIncome === null ? (
           <p>please enter your monthly income</p>

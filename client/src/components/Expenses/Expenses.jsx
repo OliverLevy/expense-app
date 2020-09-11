@@ -1,23 +1,29 @@
 import React, { useContext } from "react";
-import { ExpenseContext, IncomeContext } from "../../UserContext";
+import { ExpenseContext } from "../../UserContext";
+import { v4 as uuid } from "uuid";
+
+import ExpensesCard from "../ExpensesCard/ExpensesCard";
 
 export default function Expenses() {
   const { userExpenses, setUserExpenses } = useContext(ExpenseContext);
-  const { userIncome } = useContext(IncomeContext);
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(e.target.amount.value);
-    console.log(e.target.notes.value);
-    setUserExpenses([
-      ...userExpenses,
-      {
-        time: Date.now(),
-        amount: e.target.amount.value,
-        notes: e.target.notes.value,
-      },
-    ]);
-    e.target.reset();
+    if (!e.target.amount.value || !e.target.notes.value) {
+      alert("please add fill all the fields");
+    } else {
+      setUserExpenses([
+        ...userExpenses,
+        {
+          id: uuid(),
+          timestamp: Date.now(),
+          amount: Number(e.target.amount.value),
+          notes: e.target.notes.value,
+        },
+      ]);
+      e.target.reset();
+      e.target.amount.focus();
+    }
   };
 
   console.log(userExpenses);
@@ -27,7 +33,7 @@ export default function Expenses() {
         this is the form
         <div>
           <label htmlFor="amount">Amount</label>
-          <input type="number" name="amount" />
+          <input type="number" name="amount" step="any" />
         </div>
         <div>
           <label htmlFor="notes">Notes:</label>
@@ -35,6 +41,13 @@ export default function Expenses() {
         </div>
         <button type="submit">add new expense</button>
       </form>
+      {userExpenses.length !== 0 ? (
+        userExpenses.map((item) => {
+          return <ExpensesCard data={item} key={item.id} />;
+        })
+      ) : (
+        <p>no expenses saved</p>
+      )}
     </div>
   );
 }
