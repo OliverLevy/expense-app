@@ -3,6 +3,7 @@ import { ExpenseContext } from "../../UserContext";
 import { v4 as uuid } from "uuid";
 
 import ExpensesCard from "../ExpensesCard/ExpensesCard";
+import TotalExpenses from "../TotalExpenses/TotalExpenses";
 
 export default function Expenses() {
   const { userExpenses, setUserExpenses } = useContext(ExpenseContext);
@@ -26,7 +27,6 @@ export default function Expenses() {
     }
   };
 
-  console.log(userExpenses);
   return (
     <div>
       <form onSubmit={(e) => handleClick(e)}>
@@ -48,6 +48,8 @@ export default function Expenses() {
       ) : (
         <p>no expenses saved</p>
       )}
+
+      <TotalExpenses />
     </div>
   );
 }

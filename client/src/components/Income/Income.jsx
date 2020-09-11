@@ -7,7 +7,7 @@ export default function Income() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUserIncome(e.target.income.value);
+    setUserIncome(Number(e.target.income.value));
     e.target.reset();
   };
 
