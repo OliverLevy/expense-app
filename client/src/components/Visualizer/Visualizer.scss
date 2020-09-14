@@ -1,0 +1,12 @@
+.percent {
+  background: none;
+  border: black solid 3px;
+  height: 48px;
+  width: 100%;
+  overflow: hidden;
+
+  &__expenses {
+    background: lightblue;
+    height: 100%;
+  }
+}

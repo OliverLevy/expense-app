@@ -39,14 +39,10 @@ export default function ExpensesCard({ data }) {
       timestamp: oldValue[0].timestamp,
     };
 
-    const test = userExpenses
-    test.splice(position, 1, newValue)
-
-    // console.log(222,newValue)
-    editToggle()
-    // userExpenses.splice(position, 1, newValue);
-    setUserExpenses(test)
-    // console.log(333,userExpenses)
+    const newArray = [...userExpenses];
+    newArray[position] = newValue;
+    setUserExpenses(newArray);
+    editToggle();
   };
 
   const EditMode = () => {

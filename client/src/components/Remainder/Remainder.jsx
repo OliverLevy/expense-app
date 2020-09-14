@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { ExpenseContext, IncomeContext } from "../../UserContext";
 
+import Visualizer from '../Visualizer/Visualizer'
+
 export default function Remainder() {
   const { userExpenses } = useContext(ExpenseContext);
   const { userIncome } = useContext(IncomeContext);
@@ -21,6 +23,8 @@ export default function Remainder() {
     <div>
       <h5>total remainder after expenses:</h5>
       <h5>${calcRemainder()}</h5>
+
+      <Visualizer income={userIncome} totalExpenses={calcTotal()}/>
     </div>
   );
 }
