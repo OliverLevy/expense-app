@@ -2,8 +2,6 @@ import React from "react";
 import "./Visualizer.scss";
 
 export default function Visualizer({ income, totalExpenses }) {
-  console.log(income, totalExpenses);
-
   const percent = () => {
     return (totalExpenses * 100) / income;
   };
