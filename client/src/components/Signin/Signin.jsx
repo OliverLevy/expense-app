@@ -1,11 +1,46 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContex } from "../../UserContext";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
-export default function Signin() {
-  const { userInfo, setUserInfo } = useContext(UserContex);
 
+
+export default function Signin() {
+  const { setUserInfo } = useContext(UserContex);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        setUserInfo(user);
+      } else {
+        // No user is signed in.
+        console.log("no one is signed in");
+      }
+    });
+  });
+
+  // console.log(userInfo);
+
+  return (
+    <div>
+      {isLoading()}
+      {HandleAuth()}
+    </div>
+  );
+}
+
+const isLoading = () => {
+  return (
+    <div>
+      <p>loading...</p>
+    </div>
+  );
+};
+
+const HandleAuthCheck = () => {};
+
+const HandleAuth = () => {
+  const { setUserInfo } = useContext(UserContex);
   const googleLogin = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase
@@ -58,12 +93,10 @@ export default function Signin() {
       });
   };
 
-  console.log(userInfo);
-
   return (
     <div>
       <button onClick={() => googleLogin()}>Google</button>
       <button onClick={() => facebookLogin()}>Facebook</button>
     </div>
   );
-}
+};

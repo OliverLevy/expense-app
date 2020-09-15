@@ -22,7 +22,6 @@ export default function Header() {
         console.log(error);
       });
   };
-  // signOut()
 
   return (
     <div>
