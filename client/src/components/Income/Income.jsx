@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { IncomeContext, UserContex } from "../../UserContext";
 import "./Income.scss";
 import firebase from "../../config";
@@ -7,14 +7,33 @@ export default function Income() {
   const { userIncome, setUserIncome } = useContext(IncomeContext);
   const { userInfo } = useContext(UserContex);
 
-  console.log(911, userInfo);
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(userInfo.uid)
+      .onSnapshot((item) => {
+        const income = item.data().income;
+
+        if (income) {
+          setUserIncome(income);
+        } else {
+          setUserIncome(0);
+        }
+      });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setUserIncome(Number(e.target.income.value));
-    firebase.firestore().collection("users").doc(userInfo.uid).update({
-      income: Number(e.target.income.value)
-    })
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(userInfo.uid)
+      .update({
+        income: Number(e.target.income.value),
+      });
     e.target.reset();
   };
 

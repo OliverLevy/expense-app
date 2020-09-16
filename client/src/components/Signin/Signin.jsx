@@ -179,19 +179,33 @@ export const HandleLoad = () => {
           const user = result.user;
           // ...
           setUserInfo(user);
-          console.log(user.uid);
-          console.log(user);
-          firebase
-            .firestore()
-            .collection("users")
-            .doc(user.uid)
-            .set({
-              name: user.displayName,
-              avatar: user.photoURL,
-              id: user.uid,
-            })
-            .then((suc) => console.log(suc))
-            .catch((err) => console.log(err));
+          if (
+            result.additionalUserInfo &&
+            result.additionalUserInfo.isNewUser
+          ) {
+            firebase
+              .firestore()
+              .collection("users")
+              .doc(user.uid)
+              .set({
+                name: user.displayName,
+                avatar: user.photoURL,
+                id: user.uid,
+                date_created: Date.now(),
+              })
+              .then((suc) => console.log(suc))
+              .catch((err) => console.log(err));
+          } else {
+            firebase
+              .firestore()
+              .collection("users")
+              .doc(user.uid)
+              .update({
+                last_login: Date.now(),
+              })
+              .then((suc) => console.log(suc))
+              .catch((err) => console.log(err));
+          }
         })
         .catch(function (error) {
           // Handle Errors here.
@@ -218,7 +232,6 @@ export const HandleLoad = () => {
           const user = result.user;
           // ...
           setUserInfo(user);
-          console.log(user);
           firebase.firestore().collection("users").doc(user.uid).set({
             name: user.displayName,
             avatar: user.photoURL,

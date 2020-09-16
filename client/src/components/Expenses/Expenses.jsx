@@ -1,26 +1,48 @@
-import React, { useContext } from "react";
-import { ExpenseContext } from "../../UserContext";
+import React, { useContext, useEffect } from "react";
+import { ExpenseContext, UserContex } from "../../UserContext";
 import { v4 as uuid } from "uuid";
 
 import ExpensesCard from "../ExpensesCard/ExpensesCard";
+import firebase from "../../config";
 
 export default function Expenses() {
   const { userExpenses, setUserExpenses } = useContext(ExpenseContext);
+  const { userInfo } = useContext(UserContex);
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(userInfo.uid)
+      .collection("expenses")
+      .onSnapshot((querySnapshot) => {
+        const output = [];
+        querySnapshot.forEach((item) => {
+          output.push(item.data());
+        });
+        setUserExpenses(output)
+      });
+  }, []);
 
   const handleClick = (e) => {
     e.preventDefault();
     if (!e.target.amount.value || !e.target.notes.value) {
       alert("please add fill all the fields");
     } else {
-      setUserExpenses([
-        ...userExpenses,
-        {
-          id: uuid(),
-          timestamp: Date.now(),
-          amount: Number(e.target.amount.value),
-          notes: e.target.notes.value,
-        },
-      ]);
+      let data = {
+        id: uuid(),
+        timestamp: Date.now(),
+        amount: Number(e.target.amount.value),
+        notes: e.target.notes.value,
+      };
+      setUserExpenses([...userExpenses, data]);
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(userInfo.uid)
+        .collection("expenses")
+        .doc(data.id)
+        .set(data);
       e.target.reset();
       e.target.amount.focus();
     }
