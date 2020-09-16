@@ -1,11 +1,12 @@
 import React, { useContext, useState, useRef } from "react";
 import Moment from "react-moment";
+import firebase from "../../config";
 
-import { ExpenseContext } from "../../UserContext";
+import { ExpenseContext, UserContex } from "../../UserContext";
 
 export default function ExpensesCard({ data }) {
   const { userExpenses, setUserExpenses } = useContext(ExpenseContext);
-
+  const { userInfo } = useContext(UserContex);
   const [isInEditeMode, setIsInEditMode] = useState(false);
 
   const amountRef = useRef(null);
@@ -14,10 +15,13 @@ export default function ExpensesCard({ data }) {
   const handleDelete = (id) => {
     //filter to return array with objects that do not have the same id
     //setUseExpenses to the new array
-    const output = userExpenses.filter((item) => {
-      return item.id !== id;
-    });
-    setUserExpenses(output);
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(userInfo.uid)
+      .collection("expenses")
+      .doc(id)
+      .delete();
   };
 
   const editToggle = () => {
@@ -29,6 +33,7 @@ export default function ExpensesCard({ data }) {
     // console.log(id);
     // console.log(amountRef.current.value);
     // console.log(notesRef.current.value);
+    
 
     const oldValue = userExpenses.filter((item) => item.id === id);
     const position = userExpenses.findIndex((item) => item.id === id);
@@ -39,9 +44,16 @@ export default function ExpensesCard({ data }) {
       timestamp: oldValue[0].timestamp,
     };
 
-    const newArray = [...userExpenses];
-    newArray[position] = newValue;
-    setUserExpenses(newArray);
+    // const newArray = [...userExpenses];
+    // newArray[position] = newValue;
+    // setUserExpenses(newArray);
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(userInfo.uid)
+      .collection("expenses")
+      .doc(id)
+      .update(newValue);
     editToggle();
   };
 
