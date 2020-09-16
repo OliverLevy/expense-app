@@ -1,13 +1,20 @@
 import React, { useContext } from "react";
-import { IncomeContext } from "../../UserContext";
+import { IncomeContext, UserContex } from "../../UserContext";
 import "./Income.scss";
+import firebase from "../../config";
 
 export default function Income() {
   const { userIncome, setUserIncome } = useContext(IncomeContext);
+  const { userInfo } = useContext(UserContex);
+
+  console.log(911, userInfo);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setUserIncome(Number(e.target.income.value));
+    firebase.firestore().collection("users").doc(userInfo.uid).update({
+      income: Number(e.target.income.value)
+    })
     e.target.reset();
   };
 

@@ -14,7 +14,6 @@ export default function Header() {
       .signOut()
       .then(() => {
         // Sign-out successful.
-        console.log('logged out')
         setUserInfo(null);
       })
       .catch((error) => {
@@ -26,9 +25,17 @@ export default function Header() {
   return (
     <div>
       <p>this is the header</p>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      {!userInfo ? "" : <button onClick={() => signOut()}>signOut</button>}
+      <p>expense tracking app</p>
+
+      {!userInfo ? (
+        ""
+      ) : (
+        <div>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <button onClick={() => signOut()}>signOut</button>
+        </div>
+      )}
     </div>
   );
 }

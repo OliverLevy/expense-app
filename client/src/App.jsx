@@ -5,16 +5,10 @@ import "./App.scss";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import About from "./components/About/About";
-import Signin from "./components/Signin/Signin";
+import { HandleLoad } from "./components/Signin/Signin";
 import { ExpenseContext, IncomeContext, UserContex } from "./UserContext";
 
-import * as firebase from "firebase/app";
-import "firebase/analytics";
-import "firebase/auth";
-import "firebase/firestore";
-import { firebaseConfig } from "./config";
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+import firebase from './config'
 
 function App() {
   const [userIncome, setUserIncome] = useState(null);
@@ -36,8 +30,6 @@ function App() {
     setUserExpenses,
   ]);
 
-  console.log(1234, userInfo);
-
   return (
     <div className="App">
       <Router>
@@ -46,7 +38,10 @@ function App() {
             <ExpenseContext.Provider value={providerExpenses}>
               <Header />
               {!userInfo ? (
-                <Signin />
+                <div>
+                  <HandleLoad />
+                  <About />
+                </div>
               ) : (
                 <Switch>
                   <Route exact path="/">
