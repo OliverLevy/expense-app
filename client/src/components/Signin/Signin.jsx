@@ -3,10 +3,10 @@ import { UserContex } from "../../UserContext";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
-
-
 export default function Signin() {
-  const { setUserInfo } = useContext(UserContex);
+  const { userInfo, setUserInfo } = useContext(UserContex);
+  
+  //checks if a user is already signed in
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -19,28 +19,6 @@ export default function Signin() {
     });
   });
 
-  // console.log(userInfo);
-
-  return (
-    <div>
-      {isLoading()}
-      {HandleAuth()}
-    </div>
-  );
-}
-
-const isLoading = () => {
-  return (
-    <div>
-      <p>loading...</p>
-    </div>
-  );
-};
-
-const HandleAuthCheck = () => {};
-
-const HandleAuth = () => {
-  const { setUserInfo } = useContext(UserContex);
   const googleLogin = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase
@@ -93,10 +71,15 @@ const HandleAuth = () => {
       });
   };
 
+
+
+  
   return (
     <div>
+     
       <button onClick={() => googleLogin()}>Google</button>
       <button onClick={() => facebookLogin()}>Facebook</button>
     </div>
   );
-};
+}
+
