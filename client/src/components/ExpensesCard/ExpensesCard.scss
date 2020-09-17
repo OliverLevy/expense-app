@@ -1,0 +1,99 @@
+@import "../../styles/mixins";
+
+.default-expense {
+  // background: pink;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  position: relative;
+  box-shadow: 0 0 20px rgb(211, 211, 211);
+
+  &__delete {
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__edit {
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__info {
+    // background: red;
+    width: 85%;
+  }
+}
+
+.edit-expense {
+  // background: pink;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  position: relative;
+  box-shadow: 0 0 20px rgb(211, 211, 211);
+  min-height: 124px;
+
+  &__input {
+    @include input;
+    // margin: 0.5rem 0;
+  }
+
+  &__input-text {
+    width: 80%;
+    resize: vertical;
+    background: none;
+    font-family: futura-pt;
+    padding: 0.5rem;
+    border: 1px solid black;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__save {
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__cancel {
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -1,13 +1,14 @@
 import React, { useContext, useState, useRef } from "react";
 import Moment from "react-moment";
 import firebase from "../../config";
+import "./ExpensesCard.scss";
 
 import { ExpenseContext, UserContex } from "../../UserContext";
 
 export default function ExpensesCard({ data }) {
   const { userExpenses, setUserExpenses } = useContext(ExpenseContext);
   const { userInfo } = useContext(UserContex);
-  const [isInEditeMode, setIsInEditMode] = useState(false);
+  const [isInEditeMode, setIsInEditMode] = useState(true);
 
   const amountRef = useRef(null);
   const notesRef = useRef(null);
@@ -33,7 +34,6 @@ export default function ExpensesCard({ data }) {
     // console.log(id);
     // console.log(amountRef.current.value);
     // console.log(notesRef.current.value);
-    
 
     const oldValue = userExpenses.filter((item) => item.id === id);
     const position = userExpenses.findIndex((item) => item.id === id);
@@ -59,32 +59,54 @@ export default function ExpensesCard({ data }) {
 
   const EditMode = () => {
     return (
-      <div>
+      <div className="edit-expense">
+        <p>new amount</p>
         <input
           type="number"
           step="any"
           defaultValue={data.amount}
           ref={amountRef}
+          className="edit-expense__input"
         />
-        <input type="text" defaultValue={data.notes} ref={notesRef} />
-        <button onClick={() => submitEdit(data.id)}>save</button>
-        <button onClick={() => editToggle()}>cancel</button>
+        <p>new description</p>
+        <textarea
+          defaultValue={data.notes}
+          ref={notesRef}
+          className="edit-expense__input-text"
+        />
+        <button
+          onClick={() => submitEdit(data.id)}
+          className="edit-expense__save"
+        >
+          <p>save</p>
+        </button>
+        <button onClick={() => editToggle()} className="edit-expense__cancel">
+          <p>cancel</p>
+        </button>
       </div>
     );
   };
 
   const defaultMode = () => {
     return (
-      <div>
-        <h5>Expense amount:</h5>
-        <p>${data.amount}</p>
-        <h5>Description:</h5>
-        <p>{data.notes}</p>
-        <p>
-          <Moment fromNow>{data.timestamp}</Moment>
-        </p>
-        <button onClick={() => handleDelete(data.id)}>delete</button>
-        <button onClick={() => editToggle()}>edit</button>
+      <div className="default-expense">
+        <div className="default-expense__info">
+          <h3>${data.amount}</h3>
+          <p>on</p>
+          <p>{data.notes}</p>
+          <p>
+            <Moment fromNow>{data.timestamp}</Moment>
+          </p>
+        </div>
+        <button
+          onClick={() => handleDelete(data.id)}
+          className="default-expense__delete"
+        >
+          <p>x</p>
+        </button>
+        <button onClick={() => editToggle()} className="default-expense__edit">
+          <p>edit</p>
+        </button>
       </div>
     );
   };
