@@ -1,11 +1,26 @@
-@import '../../styles/mixins';
+@import "../../styles/mixins";
 
 .about {
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
 
   @include tablet {
     width: 768px;
     margin: auto;
+  }
+}
+
+.social-icon {
+  height: 25px;
+  // margin: .5rem;
+
+  &__container {
+    // background: pink;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    height: 50px;
   }
 }
