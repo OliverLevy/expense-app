@@ -43,6 +43,11 @@
   &__input-container {
     padding: 0.5rem 0;
   }
+
+  &__input-border{
+    border-bottom: 1px solid black;
+    width: 130px;
+  }
 }
 
 .label {

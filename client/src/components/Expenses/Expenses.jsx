@@ -57,6 +57,7 @@ export default function Expenses() {
           <label htmlFor="amount" className="label">
             Amount:{" "}
           </label>
+          <div className='expenses__input-border'>
           <input
             type="number"
             name="amount"
@@ -64,6 +65,7 @@ export default function Expenses() {
             className="expenses__input"
             placeholder="Expense Amount"
           />
+          </div>
         </div>
         <div>
           <label htmlFor="notes" className="label">

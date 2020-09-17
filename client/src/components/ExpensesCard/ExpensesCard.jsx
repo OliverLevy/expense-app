@@ -61,13 +61,15 @@ export default function ExpensesCard({ data }) {
     return (
       <div className="edit-expense">
         <p>new amount</p>
-        <input
-          type="number"
-          step="any"
-          defaultValue={data.amount}
-          ref={amountRef}
-          className="edit-expense__input"
-        />
+        <div className='edit-expense__input-border'>
+          <input
+            type="number"
+            step="any"
+            defaultValue={data.amount}
+            ref={amountRef}
+            className="edit-expense__input"
+          />
+        </div>
         <p>new description</p>
         <textarea
           defaultValue={data.notes}

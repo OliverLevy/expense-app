@@ -56,6 +56,11 @@
     // margin: 0.5rem 0;
   }
 
+  &__input-border{
+    border-bottom: 1px solid black;
+    width: 130px;
+  }
+
   &__input-text {
     width: 80%;
     resize: vertical;
