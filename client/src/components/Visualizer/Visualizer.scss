@@ -1,12 +1,25 @@
+.visualizer {
+  // background: pink;
+  padding: 1rem 0;
+}
+
 .percent {
   background: none;
   border: black solid 2px;
   height: 48px;
   width: 200px;
   overflow: hidden;
+  position: relative;
 
   &__expenses {
-    background: lightblue;
+    background: lightgray;
     height: 100%;
+  }
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: .5rem;
+    transform: translateY(-50%);
   }
 }
