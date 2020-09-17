@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ExpenseContext } from "../../UserContext";
+import './TotalExpenses.scss'
 
 export default function TotalExpenses() {
   const { userExpenses } = useContext(ExpenseContext);
@@ -13,9 +14,10 @@ export default function TotalExpenses() {
   };
 
   return (
-    <div>
-      <h5>total expenses:</h5>
-      <h5>${calcTotal()}</h5>
+    <div className='total-expenses'>
+      <h2>Total Expenses</h2>
+      <h2>${calcTotal()}</h2>
+      <div className="divider"></div>
     </div>
   );
 }
