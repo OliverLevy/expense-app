@@ -17,6 +17,7 @@
   border-bottom: 1px black solid;
   width: 130px;
   font-family: futura-pt, sans-serif;
+  border-radius: none;
 
  @include tablet {
    font-size: 1rem;
