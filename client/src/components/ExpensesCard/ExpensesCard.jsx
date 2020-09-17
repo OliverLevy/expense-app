@@ -8,7 +8,7 @@ import { ExpenseContext, UserContex } from "../../UserContext";
 export default function ExpensesCard({ data }) {
   const { userExpenses, setUserExpenses } = useContext(ExpenseContext);
   const { userInfo } = useContext(UserContex);
-  const [isInEditeMode, setIsInEditMode] = useState(true);
+  const [isInEditeMode, setIsInEditMode] = useState(false);
 
   const amountRef = useRef(null);
   const notesRef = useRef(null);

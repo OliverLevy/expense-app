@@ -1,0 +1,11 @@
+@import '../../styles/mixins';
+
+.about {
+  width: 100%;
+  padding: .5rem;
+
+  @include tablet {
+    width: 768px;
+    margin: auto;
+  }
+}

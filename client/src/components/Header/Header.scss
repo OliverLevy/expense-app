@@ -5,9 +5,16 @@
   background: white;
   position: relative;
 
-  @include tablet {
-    margin: auto;
-    width: 768px;
+  
+
+  &__inner{
+    // background: pink;
+    position: relative;
+
+    @include tablet {
+      margin: auto;
+      width: 768px;
+    }
   }
 
   &__title {

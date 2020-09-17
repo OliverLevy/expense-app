@@ -6,6 +6,35 @@
 
   &__input {
     @include input;
+    padding-left: .5rem;
+  }
+
+  &__input-text {
+    background: pink;
+    width: 100%;
+    resize: vertical;
+    background: none;
+    font-family: futura-pt;
+    padding: 0.5rem;
+    border: 1px solid black;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:placeholder-shown {
+      @include tablet {
+        font-size: 1rem;
+      }
+    }
+
+    &::placeholder {
+      color: black;
+    }
+
+    @include tablet {
+      width: 50%;
+    }
   }
 
   &__input-container {

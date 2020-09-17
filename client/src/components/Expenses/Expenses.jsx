@@ -69,10 +69,10 @@ export default function Expenses() {
           <label htmlFor="notes" className="label">
             Description:{" "}
           </label>
-          <input
+          <textarea
             type="text"
             name="notes"
-            className="expenses__input"
+            className="expenses__input-text"
             placeholder="Desciption"
           />
         </div>

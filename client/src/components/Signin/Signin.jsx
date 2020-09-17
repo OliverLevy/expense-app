@@ -3,6 +3,7 @@ import { UserContex } from "../../UserContext";
 // import * as firebase from "firebase/app";
 // import "firebase/auth";
 import firebase from "../../config";
+import "./Signin.scss";
 
 // export default function Signin() {
 //   const { userInfo, setUserInfo } = useContext(UserContex);
@@ -253,9 +254,14 @@ export const HandleLoad = () => {
     };
 
     return (
-      <div>
-        <button onClick={() => googleLogin()}>Google</button>
-        <button onClick={() => facebookLogin()}>Facebook</button>
+      <div className="sign-in">
+        <h3>Sign in to explore the expense app!</h3>
+        <button onClick={() => googleLogin()} className="sign-in__btn btn">
+          <p>Google</p>
+        </button>
+        <button onClick={() => facebookLogin()} className="sign-in__btn btn">
+          <p>Facebook</p>
+        </button>
       </div>
     );
   };
