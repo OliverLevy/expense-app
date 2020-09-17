@@ -52,11 +52,11 @@ export default function Expenses() {
     <div>
       <form onSubmit={(e) => handleClick(e)}>
         <div>
-          <label htmlFor="amount">Amount</label>
+          <label htmlFor="amount">Amount: </label>
           <input type="number" name="amount" step="any" />
         </div>
         <div>
-          <label htmlFor="notes">Notes:</label>
+          <label htmlFor="notes">Description: </label>
           <input type="text" name="notes" />
         </div>
         <button type="submit">add new expense</button>

@@ -7,7 +7,6 @@ export default function Income() {
   const { userIncome, setUserIncome } = useContext(IncomeContext);
   const { userInfo } = useContext(UserContex);
 
-
   useEffect(() => {
     firebase
       .firestore()
@@ -38,14 +37,19 @@ export default function Income() {
   };
 
   return (
-    <div>
+    <div className="income">
       <form onSubmit={(e) => handleSubmit(e)}>
         <h3>Income</h3>
-        <div>
+        <div className="income__input-container">
           <label htmlFor="income">
             How much do you make a month after tax?
           </label>
-          <input type="number" name="income" step="any" />
+          <input
+            type="number"
+            name="income"
+            step="any"
+            className="income__input"
+          />
         </div>
         {userIncome === null ? (
           <p>please enter your monthly income</p>

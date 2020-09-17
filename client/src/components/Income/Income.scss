@@ -1,0 +1,14 @@
+.income {
+  display: flex;
+  flex-direction: column;
+  background: pink;
+
+  &__input-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input{
+    width: 180px;
+  }
+}

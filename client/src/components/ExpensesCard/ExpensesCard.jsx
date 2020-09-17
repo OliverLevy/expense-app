@@ -76,7 +76,9 @@ export default function ExpensesCard({ data }) {
   const defaultMode = () => {
     return (
       <div>
-        <p>{data.amount}</p>
+        <h5>Expense amount:</h5>
+        <p>${data.amount}</p>
+        <h5>Description:</h5>
         <p>{data.notes}</p>
         <p>
           <Moment fromNow>{data.timestamp}</Moment>

@@ -1,0 +1,45 @@
+@import "../../styles/mixins";
+
+.header {
+  width: 100%;
+  background: white;
+
+  @include tablet {
+    width: 768px;
+  }
+
+  &__title {
+    // text-align: center;
+    padding: .5rem;
+  }
+
+  &__signout {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    outline: none;
+    background: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__nav-container {
+    margin: auto;
+    width: 200px;
+  }
+
+  &__nav-links {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+  }
+
+  &__link {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+  }
+}

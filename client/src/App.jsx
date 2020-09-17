@@ -8,8 +8,6 @@ import About from "./components/About/About";
 import { HandleLoad } from "./components/Signin/Signin";
 import { ExpenseContext, IncomeContext, UserContex } from "./UserContext";
 
-import firebase from './config'
-
 function App() {
   const [userIncome, setUserIncome] = useState(null);
   const [userExpenses, setUserExpenses] = useState([]);

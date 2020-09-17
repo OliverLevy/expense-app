@@ -23,19 +23,26 @@ export default function Header() {
   };
 
   return (
-    <div>
-      <p>this is the header</p>
-      <p>expense tracking app</p>
+    <header className="header">
+      <h1 className="header__title">Expense Tracker</h1>
 
       {!userInfo ? (
         ""
       ) : (
-        <div>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <button onClick={() => signOut()}>signOut</button>
+        <div className="header__nav-container">
+          <button onClick={() => signOut()} className="header__signout">
+            <h4>Log Out</h4>
+          </button>
+          <div className="header__nav-links">
+            <Link to="/" className="header__link">
+              Home
+            </Link>
+            <Link to="/about" className="header__link">
+              About
+            </Link>
+          </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }
