@@ -20,6 +20,7 @@ export default function Visualizer({ income, totalExpenses }) {
           style={{ width: income ? `${percent()}%` : "0%" }}
         ></div>
       </div>
+      <div className="divider"></div>
     </div>
   );
 }
