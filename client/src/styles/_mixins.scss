@@ -1,11 +1,37 @@
 @mixin tablet {
-  @media (min-width:768px){
+  @media (min-width: 768px) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width:1300px){
+  @media (min-width: 1300px) {
     @content;
   }
 }
+
+@mixin input {
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px black solid;
+  width: 130px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:placeholder-shown {
+    padding-bottom: 0.2rem;
+  }
+
+  &::placeholder {
+    font-family: futura-pt;
+    color: black;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+  }
+}
+

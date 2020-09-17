@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { ExpenseContext, UserContex } from "../../UserContext";
 import { v4 as uuid } from "uuid";
+import "./Expenses.scss";
 
 import ExpensesCard from "../ExpensesCard/ExpensesCard";
 import firebase from "../../config";
@@ -20,7 +21,7 @@ export default function Expenses() {
         querySnapshot.forEach((item) => {
           output.push(item.data());
         });
-        setUserExpenses(output)
+        setUserExpenses(output);
       });
   }, []);
 
@@ -49,17 +50,33 @@ export default function Expenses() {
   };
 
   return (
-    <div>
+    <div className="expenses">
+      <h2>Add Expenses</h2>
       <form onSubmit={(e) => handleClick(e)}>
-        <div>
-          <label htmlFor="amount">Amount: </label>
-          <input type="number" name="amount" step="any" />
+        <div className='expenses__input-container'>
+          <label htmlFor="amount" className="label">
+            Amount:{" "}
+          </label>
+          <input
+            type="number"
+            name="amount"
+            step="any"
+            className="expenses__input"
+            placeholder="Expense Amount"
+          />
         </div>
         <div>
-          <label htmlFor="notes">Description: </label>
-          <input type="text" name="notes" />
+          <label htmlFor="notes" className="label">
+            Description:{" "}
+          </label>
+          <input
+            type="text"
+            name="notes"
+            className="expenses__input"
+            placeholder="Desciption"
+          />
         </div>
-        <button type="submit">add new expense</button>
+        <button type="submit" className='btn'><p>Add</p></button>
       </form>
       {userExpenses.length !== 0 ? (
         userExpenses.map((item) => {
