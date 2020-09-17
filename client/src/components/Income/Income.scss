@@ -1,14 +1,30 @@
 .income {
   display: flex;
   flex-direction: column;
-  background: pink;
+  // background: pink;
+  padding: 0.5rem;
 
-  &__input-container{
+  &__input-container {
     display: flex;
     flex-direction: column;
   }
 
-  &__input{
-    width: 180px;
+  &__salary-container {
+    display: flex;
+    border-bottom: 1px solid black;
+    width: 100px;
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    background: none;
+
+    &:focus{
+      outline: none;
+    }
+    &::placeholder{
+      color: black;
+    }
   }
 }

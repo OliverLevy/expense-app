@@ -1,4 +1,11 @@
+@import "../../styles//mixins";
+
 .main {
-  max-width: 400px;
-  margin: auto;
+  width: 100%;
+  padding-top: 1rem;
+
+  @include tablet {
+    margin: auto;
+    width: 768px;
+  }
 }

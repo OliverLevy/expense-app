@@ -1,4 +1,4 @@
-@import './styles/fonts';
+@import "./styles/fonts";
 
 * {
   margin: 0;
@@ -6,4 +6,6 @@
   box-sizing: border-box;
 }
 
-
+body {
+  background: rgb(248, 248, 248);
+}

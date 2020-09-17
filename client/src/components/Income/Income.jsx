@@ -39,23 +39,26 @@ export default function Income() {
   return (
     <div className="income">
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h3>Income</h3>
         <div className="income__input-container">
           <label htmlFor="income">
-            How much do you make a month after tax?
+            <p>How much do you make a month after tax?</p>
           </label>
-          <input
-            type="number"
-            name="income"
-            step="any"
-            className="income__input"
-          />
+          <div className="income__salary-container">
+            <p className="income__input-dollar">$</p>
+            <input
+              type="number"
+              name="income"
+              step="any"
+              className="income__input"
+              placeholder={userIncome}
+            />
+          </div>
         </div>
-        {userIncome === null ? (
+        {/* {userIncome === null ? (
           <p>please enter your monthly income</p>
         ) : (
           <p>Your income is ${userIncome} per month</p>
-        )}
+        )} */}
       </form>
     </div>
   );
