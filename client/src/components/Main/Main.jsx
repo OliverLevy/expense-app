@@ -14,9 +14,9 @@ export default function Main() {
   return (
     <div className="main">
       <Income />
-      <Remainder />
       <TotalExpenses />
       <Expenses />
+      <Remainder />
     </div>
   );
 }

@@ -52,12 +52,12 @@ export default function Expenses() {
   return (
     <div className="expenses">
       <h2>Add Expenses</h2>
+      <p>add expenses here</p>
       <form onSubmit={(e) => handleClick(e)}>
         <div className='expenses__input-container'>
           <label htmlFor="amount" className="label">
             Amount:{" "}
           </label>
-          <div className='expenses__input-border'>
           <input
             type="number"
             name="amount"
@@ -65,7 +65,7 @@ export default function Expenses() {
             className="expenses__input"
             placeholder="Expense Amount"
           />
-          </div>
+          
         </div>
         <div>
           <label htmlFor="notes" className="label">

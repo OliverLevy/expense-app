@@ -11,32 +11,14 @@
     flex-direction: column;
   }
 
-  &__salary-container {
-    display: flex;
-    border-bottom: 1px solid black;
-    width: 100px;
-  }
 
   &__input {
-    width: 100%;
-    border: none;
-    background: none;
-    font-family: futura-pt;
-
-    @include tablet {
-      font-size: 1rem;
-    }
-
-    &:focus{
-      outline: none;
-    }
-    &::placeholder{
-      color: black;
-      font-family: futura-pt;
-      
-      @include tablet {
-        font-size: 1rem;
-      }
-    }
+    @include input;
   }
+
+  &__display{
+    padding: 1rem 0 0 ;
+  }
+
+
 }

@@ -15,9 +15,9 @@ export default function TotalExpenses() {
 
   return (
     <div className='total-expenses'>
-      <h2>Total Expenses</h2>
-      <h2>${calcTotal()}</h2>
-      <div className="divider"></div>
+      <h3>Monthly Expenses</h3>
+      <h3>${calcTotal()}</h3>
+      {/* <div className="divider"></div> */}
     </div>
   );
 }

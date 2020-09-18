@@ -3,48 +3,24 @@
 .expenses {
   // background: pink;
   padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin: 0.5rem;
 
   &__input {
     @include input;
-    padding-left: .5rem;
-    
+    padding-left: 0.5rem;
   }
 
   &__input-text {
-    background: pink;
-    width: 100%;
-    resize: vertical;
-    background: none;
-    font-family: futura-pt, sans-serif;
-    padding: 0.5rem;
-    outline: none;
-    border: 1px solid black;
-
-    &:focus {
-      outline: none;
-    }
-
-    &:placeholder-shown {
-      @include tablet {
-        font-size: 1rem;
-      }
-    }
-
-    &::placeholder {
-      color: black;
-    }
-
-    @include tablet {
-      width: 50%;
-      font-size: 1rem;
-    }
+    @include textarea;
   }
 
   &__input-container {
     padding: 0.5rem 0;
   }
 
-  &__input-border{
+  &__input-border {
     border-bottom: 1px solid black;
     width: 130px;
   }
@@ -52,22 +28,4 @@
 
 .label {
   display: none;
-}
-
-.btn {
-  width: 100%;
-  height: 48px;
-  padding: 0.5rem;
-  border: 2px black solid;
-  outline: none;
-  margin: 1rem 0;
-  background: none;
-
-  &:focus {
-    outline: none;
-  }
-
-  @include tablet {
-    width: 180px;
-  }
 }

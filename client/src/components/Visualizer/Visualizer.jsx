@@ -8,7 +8,7 @@ export default function Visualizer({ income, totalExpenses }) {
 
   return (
     <div className="visualizer">
-      <p>Here's what that looks like:</p>
+      <p>And for the visual people, here's what that looks like:</p>
       <div className="percent">
         {income === 0 ? (
           ""

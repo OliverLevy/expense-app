@@ -11,29 +11,24 @@
 }
 
 @mixin input {
-  background: none;
-  outline: none;
-  border: none;
-  // border-bottom: 1px black solid;
-  width: 130px;
-  font-family: futura-pt, sans-serif;
-  border-radius: none;
+  border: 2px solid black;
+  border-radius: 4px;
+  background: white;
+  height: 48px;
+  padding: 0 0.5rem;
+  width: 100%;
 
- @include tablet {
-   font-size: 1rem;
- }
+  @include tablet {
+    font-size: 1rem;
+    width: 50%;
+  }
 
   &:focus {
     outline: none;
   }
-
-  &:placeholder-shown {
-    padding-bottom: 0.2rem;
-  }
-
   &::placeholder {
-    font-family: futura-pt, sans-serif;
-    color: black;
+    color: rgb(111, 111, 110);
+    font-family: futura-pt;
 
     @include tablet {
       font-size: 1rem;
@@ -41,3 +36,63 @@
   }
 }
 
+@mixin textarea {
+  border: 2px solid black;
+  border-radius: 4px;
+  background: white;
+  resize: vertical;
+  padding: 0 0.5rem;
+  width: 100%;
+  height: 80px;
+  font-family: futura-pt, sans-serif;
+
+  @include tablet {
+    font-size: 1rem;
+    width: 50%;
+  }
+
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: rgb(111, 111, 110);
+    font-family: futura-pt;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+  }
+}
+
+.btn {
+  width: 100%;
+  height: 48px;
+  padding: 0.5rem;
+  border: 2px black solid;
+  border-radius: 4px;
+  outline: none;
+  margin: 0.5rem 0;
+  background: white;
+
+  &:hover {
+    background: lightgrey;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: translateX(2px) translateY(2px);
+  }
+
+  @include tablet {
+    width: 180px;
+  }
+}
+
+.divider {
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 2px solid black;
+}
