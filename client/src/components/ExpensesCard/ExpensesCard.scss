@@ -53,7 +53,8 @@
 
   &__input {
     @include input;
-    // margin: 0.5rem 0;
+    
+    width: 80%;
   }
 
   &__input-border{
@@ -62,16 +63,8 @@
   }
 
   &__input-text {
+    @include textarea;
     width: 80%;
-    resize: vertical;
-    background: none;
-    font-family: futura-pt;
-    padding: 0.5rem;
-    border: 1px solid black;
-
-    &:focus {
-      outline: none;
-    }
   }
 
   &__save {

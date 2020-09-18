@@ -30,11 +30,6 @@ export default function ExpensesCard({ data }) {
   };
 
   const submitEdit = (id) => {
-    // console.log(userExpenses);
-    // console.log(id);
-    // console.log(amountRef.current.value);
-    // console.log(notesRef.current.value);
-
     const oldValue = userExpenses.filter((item) => item.id === id);
     const position = userExpenses.findIndex((item) => item.id === id);
     const newValue = {
@@ -44,9 +39,6 @@ export default function ExpensesCard({ data }) {
       timestamp: oldValue[0].timestamp,
     };
 
-    // const newArray = [...userExpenses];
-    // newArray[position] = newValue;
-    // setUserExpenses(newArray);
     firebase
       .firestore()
       .collection("users")
@@ -61,15 +53,13 @@ export default function ExpensesCard({ data }) {
     return (
       <div className="edit-expense">
         <p>new amount</p>
-        <div className='edit-expense__input-border'>
-          <input
-            type="number"
-            step="any"
-            defaultValue={data.amount}
-            ref={amountRef}
-            className="edit-expense__input"
-          />
-        </div>
+        <input
+          type="number"
+          step="any"
+          defaultValue={data.amount}
+          ref={amountRef}
+          className="edit-expense__input"
+        />
         <p>new description</p>
         <textarea
           defaultValue={data.notes}
