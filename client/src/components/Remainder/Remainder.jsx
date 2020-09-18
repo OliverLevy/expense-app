@@ -23,7 +23,7 @@ export default function Remainder() {
 
   return (
     <div className='remainder'>
-      <h2>At a glace</h2>
+      <h2>At a glance</h2>
       <p>Here's what's left over after all of your expenses:</p>
       <p>${calcRemainder()}</p>
 

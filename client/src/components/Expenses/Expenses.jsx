@@ -51,7 +51,7 @@ export default function Expenses() {
 
   return (
     <div className="expenses">
-      <h2>Add Expenses</h2>
+      <h2>Expenses</h2>
       <p>add expenses here</p>
       <form onSubmit={(e) => handleClick(e)}>
         <div className='expenses__input-container'>
